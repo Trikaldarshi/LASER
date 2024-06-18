@@ -98,7 +98,23 @@ python3 run_downstream.py -p /path_to_pr_experiment -m train -u wavlm_base -d ct
 Testing:
 ```
 python3 run_downstream.py -m evaluate -e /path_to_pr_experiment/dev-best.ckpt \
--o "config.downstream_expert.datarc.test_base_path=ath_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
 ```
 
+### For ASR
+Training:
+```
+python3 run_downstream.py -p /path_to_asr_experiment -m train -u hubert_base -d asr \
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+OR
+```
+python3 run_downstream.py -p /path_to_asr_experiment -m train -u wavlm_base -d asr \
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+Testing:
+```
+python3 run_downstream.py -m evaluate -t "test-clean" -e /path_to_asr_experiment/dev-clean-best.ckpt \
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
 
