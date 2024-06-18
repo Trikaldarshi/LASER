@@ -47,3 +47,16 @@ python3 run_downstream.py -m train -p /path_to_experiment -u hubert_base -d LASE
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
 
 ```
+### For WavLM
+
+Set the hyperparameters in config.yaml file or in bash file as follows:
+```
+SIGMA=0 ## this corresponds to window size = σ = 1
+MARGIN=1
+ALPHA=0.15
+GAMMA=0.1
+
+python3 run_downstream.py -m train -p /path_to_experiment -u wavlm_base -d LASER_WavLM -f -l -1 \
+-o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
+
+```
