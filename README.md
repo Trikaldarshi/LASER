@@ -12,7 +12,7 @@ git clone https://github.com/s3prl/s3prl.git \
 cd s3prl \
 pip install -e ".[all]"
 ```
-
+```pip install wandb```
 ## Step 1: Add downstream task to s3prl toolkit
 
 Move ```LASER_finetuning``` to ```s3prl/s3prl/downstream/``` to add as a downstream task
