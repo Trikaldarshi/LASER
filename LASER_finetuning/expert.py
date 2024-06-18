@@ -32,7 +32,7 @@ from .laser import IDMContrastiveLoss
 ## upstream rate = 20 ms for HuBERT base
 
 # intialize wandb with project name s3prl-dummy
-wandb.init(project="Interspeech- 2024-CustomLoss")
+wandb.init(project="LASER_finetuning")
 
 class DownstreamExpert(nn.Module):
 
