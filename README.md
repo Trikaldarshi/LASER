@@ -14,3 +14,10 @@ pip install -e ".[all]"
 ```
 
 ## Step 1: Add downstream task to s3prl toolkit
+
+Move ```LASER_HuBERT``` or ```LASER_WavLM``` to ```s3prl/s3prl/downstream/``` to add as a downstream task
+Setup the path downstream_expert.datarc.path in config.yaml
+
+
+## Step 2: Modify runner.py
+As s3prl does not provide any layerwise control for fine-tuning, we need to modify the ```s3prl/downstream/runner.py``` to freeze the layers that we don't want to train and some other details for configuration used in the downstream task.
