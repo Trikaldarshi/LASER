@@ -15,7 +15,9 @@ pip install -e ".[all]"
 
 ## Step 1: Add downstream task to s3prl toolkit
 
-Move ```LASER_HuBERT``` or ```LASER_WavLM``` to ```s3prl/s3prl/downstream/``` to add as a downstream task
+Move ```LASER_finetuning``` to ```s3prl/s3prl/downstream/``` to add as a downstream task
+
+In ```LASER_finetuning/dataset.py``` keep ```speed_factors = [0.9, 1.0, 1.1]``` for HuBERT **OR** ```speed_factors =[[0.80, 0.85, 0.9, 1.0, 1.1, 1.15, 1.20]]``` for WavLM
 
 Setup the path ```downstream_expert.datarc.path``` in ```config.yaml```
 
