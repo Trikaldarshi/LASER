@@ -49,6 +49,7 @@ python3 run_downstream.py -m train -p /path_to_laser_experiment -u hubert_base -
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
 
 ```
+#### wandb report: https://api.wandb.ai/links/amitmeghu/6ft4g8nn
 ### For WavLM
 
 Set the hyperparameters in config.yaml file or in bash file as follows:
