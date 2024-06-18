@@ -33,3 +33,17 @@ model = Upstream(\
         ).to(self.args.device)
 > PASTE THE SCRIPT HERE (copied from ```runner_part_freeze_layers.py)
 ```
+## Step 3: LASER fine-tuning
+### For HuBERT
+
+Set the hyperparameters in config.yaml file or in bash file as follows:
+```
+SIGMA=0 ## this corresponds to window size = σ = 1
+MARGIN=1.1
+ALPHA=0.4
+GAMMA=0.1
+
+python3 run_downstream.py -m train -p /path_to_experiment -u hubert_base -d LASER_HuBERT -f -l -1 \
+-o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
+
+```
