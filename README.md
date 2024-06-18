@@ -60,3 +60,24 @@ python3 run_downstream.py -m train -p /path_to_experiment -u wavlm_base -d LASER
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
 
 ```
+## Step 4: Evaluate the SCORE finetuned model on QbE, ASR, and PR for SUPERB benchmark
+Download the needed data, set data paths etc for the respective tasks. More info at [S3PRL/SUPERB](https://github.com/s3prl/s3prl/blob/main/s3prl/downstream/docs/superb.md)
+
+### For QbE on test set with last layer
+
+For HuBERT
+```
+python3 run_downstream.py -m evaluate -t "test" -u hubert_base -l -1 -d quesst14_dtw -p /path_to_qbe_experiment \
+-o "config.downstream_expert.datarc.test_base_path=/path_to_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+For WavLM
+```
+python3 run_downstream.py -m evaluate -t "test" -u wavlm_base -l -1 -d quesst14_dtw -p /path_to_qbe_experiment \
+-o "config.downstream_expert.datarc.test_base_path=/path_to_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+Then move to scoring directory (PATH_SCORING = /yourpath/quesst14Database/scoring/) and run score script
+```
+cd $PATH_SCORING
+bash ./score-TWV-Cnxe.sh /path_to_qbe_experiment groundtruth_quesst14_eval -10
+
+```
