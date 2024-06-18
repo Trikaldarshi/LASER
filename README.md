@@ -43,7 +43,7 @@ MARGIN=1.1
 ALPHA=0.4
 GAMMA=0.1
 
-python3 run_downstream.py -m train -p /path_to_experiment -u hubert_base -d LASER_HuBERT -f -l -1 \
+python3 run_downstream.py -m train -p /path_to_laser_experiment -u hubert_base -d LASER_HuBERT -f -l -1 \
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
 
 ```
@@ -56,7 +56,7 @@ MARGIN=1
 ALPHA=0.15
 GAMMA=0.1
 
-python3 run_downstream.py -m train -p /path_to_experiment -u wavlm_base -d LASER_WavLM -f -l -1 \
+python3 run_downstream.py -m train -p /path_to_laser_experiment -u wavlm_base -d LASER_WavLM -f -l -1 \
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
 
 ```
@@ -68,12 +68,12 @@ Download the needed data, set data paths etc for the respective tasks. More info
 For HuBERT
 ```
 python3 run_downstream.py -m evaluate -t "test" -u hubert_base -l -1 -d quesst14_dtw -p /path_to_qbe_experiment \
--o "config.downstream_expert.datarc.test_base_path=/path_to_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+-o "config.downstream_expert.datarc.test_base_path=/path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
 ```
 For WavLM
 ```
 python3 run_downstream.py -m evaluate -t "test" -u wavlm_base -l -1 -d quesst14_dtw -p /path_to_qbe_experiment \
--o "config.downstream_expert.datarc.test_base_path=/path_to_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+-o "config.downstream_expert.datarc.test_base_path=/path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
 ```
 Then move to scoring directory (PATH_SCORING = /yourpath/quesst14Database/scoring/) and run score script
 ```
@@ -82,3 +82,23 @@ bash ./score-TWV-Cnxe.sh /path_to_qbe_experiment groundtruth_quesst14_eval -10
 
 ```
 Note: to reproduce for superb benchmark, keep ```config.runner.freeze_layers=False,,config.runner.baseline=superb ```
+
+### For PR
+Note: Make sure lr is 5.0e − 4 \
+Training:
+```
+python3 run_downstream.py -p /path_to_pr_experiment -m train -u hubert_base -d ctc -c downstream/ctc/libriphone.yaml \
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+OR
+```
+python3 run_downstream.py -p /path_to_pr_experiment -m train -u wavlm_base -d ctc -c downstream/ctc/libriphone.yaml \
+-o "config.downstream_expert.datarc.test_base_path=path_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+Testing:
+```
+python3 run_downstream.py -m evaluate -e /path_to_pr_experiment/dev-best.ckpt \
+-o "config.downstream_expert.datarc.test_base_path=ath_to_laser_experiment/states-3600.ckpt,,config.runner.freeze_layers=False,,config.runner.baseline=custom"
+```
+
+
