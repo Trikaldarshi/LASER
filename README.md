@@ -16,7 +16,8 @@ pip install -e ".[all]"
 ## Step 1: Add downstream task to s3prl toolkit
 
 Move ```LASER_HuBERT``` or ```LASER_WavLM``` to ```s3prl/s3prl/downstream/``` to add as a downstream task
-Setup the path downstream_expert.datarc.path in config.yaml
+
+Setup the path ```downstream_expert.datarc.path``` in ```config.yaml```
 
 
 ## Step 2: Modify runner.py
