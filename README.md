@@ -63,7 +63,7 @@ python3 run_downstream.py -m train -p /path_to_laser_experiment -u wavlm_base -d
 
 ```
 ## Step 4: Evaluate the SCORE finetuned model on QbE, ASR, and PR for SUPERB benchmark
-Download the needed data, set data paths etc for the respective tasks. More info at [S3PRL/SUPERB](https://github.com/s3prl/s3prl/blob/main/s3prl/downstream/docs/superb.md)
+Download the needed data, set data paths etc for the respective tasks. More info and hyperparameter values are available at [S3PRL/SUPERB](https://github.com/s3prl/s3prl/blob/main/s3prl/downstream/docs/superb.md)
 
 ### For QbE on test set with last layer
 
