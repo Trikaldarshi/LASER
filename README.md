@@ -81,3 +81,4 @@ cd $PATH_SCORING
 bash ./score-TWV-Cnxe.sh /path_to_qbe_experiment groundtruth_quesst14_eval -10
 
 ```
+Note: to reproduce for superb benchmark, keep ```config.runner.freeze_layers=False,,config.runner.baseline=superb ```
