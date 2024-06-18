@@ -31,7 +31,7 @@ model = Upstream(\
             model_config = self.args.upstream_model_config,
             refresh = upstream_refresh,
         ).to(self.args.device)
-> PASTE THE SCRIPT HERE (copied from ```runner_part_freeze_layers.py)
+> PASTE THE SCRIPT HERE (copied from ```runner_part_freeze.py)
 ```
 ## Step 3: LASER fine-tuning
 ### For HuBERT
