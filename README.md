@@ -44,6 +44,7 @@ SIGMA=0 ## this corresponds to window size = σ = 1
 MARGIN=1.1
 ALPHA=0.4
 GAMMA=0.1
+LOSS_TYPE=softdtw_lav
 
 python3 run_downstream.py -m train -p /path_to_laser_experiment -u hubert_base -d LASER_finetuning -f -l -1 \
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
@@ -58,6 +59,7 @@ SIGMA=0 ## this corresponds to window size = σ = 1
 MARGIN=1
 ALPHA=0.15
 GAMMA=0.1
+LOSS_TYPE=softdtw_lav
 
 python3 run_downstream.py -m train -p /path_to_laser_experiment -u wavlm_base -d LASER_finetuning -f -l -1 \
 -o "config.downstream_expert.modelrc.sigma=$SIGMA,,config.downstream_expert.modelrc.gamma=$GAMMA,,config.downstream_expert.modelrc.margin=$MARGIN,,config.downstream_expert.modelrc.loss_type=$LOSS_TYPE,,config.downstream_expert.modelrc.alpha=$ALPHA"
